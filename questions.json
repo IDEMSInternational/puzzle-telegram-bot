@@ -1,0 +1,148 @@
+{
+	"questions": [
+		{
+			"text": "What is the last digit of 230 + 15 + 1059373 + 897452 + 23009244 + 1024 + 22422422 + 37",
+			"answer": 7
+		},
+		{
+			"text": "From 27 little 1x1x1 cm cubes, you make a 3x3x3 cm cube and place it on a glass table. How many of the little cubes are not visible from the outside (you can also look at it from below)?",
+			"answer": 1
+		},
+		{
+			"text": "What is 5+5",
+			"answer": 10
+		},
+		{
+			"text": "How many squares (of any size) can you find in this grid?",
+			"answer": 14,
+			"attachment": "attachments/grid.png"
+		},
+		{
+			"text": "Today, in the morning, Samuel has 14 cookies. Each morning, he eats half of the remaining cookies. Each evening, Laetitia steals one of Samuel's cookies. How many cookies does Laetitia steal in total?",
+			"answer": 3
+		},
+		{
+			"text": "What is 131313 + 343434 - 464646?",
+			"answer": 10101
+		},
+		{
+			"text": "How many small triangles fit into the big triangle?",
+			"answer": 9,
+			"attachment": "attachments/triangles.png"
+		},
+		{
+			"text": "What's the area of this shape?",
+			"answer": 57,
+			"attachment": "attachments/room.png"
+		},
+		{
+			"text": "How many zeros are at the end of the number 4\u00D7100\u00D75000\u00D730\u00D750?",
+			"answer": 9
+		},
+		{
+			"text": "The snail takes 30 minutes to walk 1 meter, the slug takes 20 minutes to walk 1 meter. If they are 10 meters apart and start walking towards each other, after how many minutes do they meet?",
+			"answer": 120
+		},
+		{
+			"text": "There is a pond with a patch of lily pads. Every day, the size of the patch doubles. In 48 days, the entire pond will be covered, but how many days does it take to cover half the pond?",
+			"answer": 47
+		},
+		{
+			"text": "Calculate the value of 654321 - 555555 + 123456",
+			"answer": 222222
+		},
+		{
+			"text": "Calculate the value of 9 + 99 + 999 + 9999 + 4",
+			"answer": 11110
+		},
+		{
+			"text": "We glue together 990 cubes into a 9x10x11 rectangular solid. Then we paint the outside of the solid. How many of the original 990 cubes have exactly one of their sides painted?",
+			"answer": 382
+		},
+		{
+			"text": "The product of two numbers is 36 and their sum is 37. What is their difference?",
+			"answer": 35
+		},
+		{
+			"text": "On the planet Otto days have only 8 hours. On Otto schools start at 6 and the lessons last 5 hours. Max needs 1 hour to go back home from school. What time does he arrive home on schooldays?",
+			"answer": 4
+		},
+		{
+			"text": "What is the 7th smallest positive integer whose sum of digits is 5?",
+			"answer": 104
+		},
+		{
+			"text": "A bucket was half full. A cleaner added 2 litres to the bucket. The bucket was then three-quarters full. What is the capacity of the bucket (in litres)?",
+			"answer": 8
+		},
+		{
+			"text": "The picture shows a decagon with all sides meeting at right angles. Lengths of some of the sides (shown as dashed in the picture) are known and given in centimeters. What is the perimeter of the decagon in cm?",
+			"answer": 4444,
+			"attachment": "attachments/shape_perimeter.png"
+		},
+		{
+			"text": "Mr Candle bought 100 candles. He burns one candle every day and always makes one new one from the remaining wax of seven burnt candles. After how many days will he have to go and buy new candles again?",
+			"answer": 116
+		},
+		{
+			"text": "Calculate the value of 67\u00B2 - 72\u00B2 - 77\u00B2 + 82\u00B2",
+			"answer": 100
+		},
+		{
+			"text": "How many percent (%) of the area of the triangle is colored in gray?",
+			"answer": 52,
+			"attachment": "attachments/triangle_area.png"
+		},
+		{
+			"text": "A soccer club owns five identical mowers. It takes 10 hours to mow the grass of the soccer field using two of the mowers. How many hours does it take to mow the grass of the same field using all five mowers?",
+			"answer": 4
+		},
+		{
+			"text": "The pentagon below has three right angles. Find its area.",
+			"answer": 76,
+			"attachment": "attachments/5gon.png"
+		},
+		{
+			"text": "Four rectangular strips each measuring 4 by 16 centimeters are laid out with two vertical strips crossing two horizontal strips forming a single polygon which looks like a tic-tac-toe pattern. What is the perimeter of this polygon?",
+			"answer": 96,
+			"attachment": "attachments/strips.png"
+		},
+		{
+			"text": "There were 891 people voting in my district. There were 20 percent more female voters than male voters. How many female voters were there in my district?",
+			"answer": 486
+		},
+		{
+			"text": "A rectangle has area 1100. If the length is increased by ten percent and the width is decreased by ten percent, what is the area of the new rectangle?",
+			"answer": 1089
+		},
+		{
+			"text": "You cut a circular piece of pizza using 4 straight cuts. What is the largest number of pieces you can obtain?",
+			"answer": 11
+		},
+		{
+			"text": "Three years ago the age of Pluto's mum was three times the age of Pluto. Now the age of Pluto's dad is three times the age of Pluto. What is the difference of ages of Pluto's parents in years?",
+			"answer": 6
+		},
+		{
+			"text": "How many triangles are there in the picture?",
+			"answer": 20,
+			"attachment": "attachments/triangle_count.png"
+		},
+		{
+			"text": "Little Christine owns a big treasure chest containing a lot of labelled coins: one coin labelled with 1, two coins labelled with 2, ..., eighteen coins labelled with 18, and nineteen coins labelled with 19. Christine takes one coin after the other out of her treasure chest without being able to read its label. What is the minimum number of coins Christine has to take out if she wants to make sure she has ten identically labelled coins?",
+			"answer": 136
+		},
+		{
+			"text": "Fiona has two cubes, one of side length 9cm composed of white unit cubes (i.e. cubes of side length 1cm), and one of side length 10cm composed of black unit cubes. With these unit cubes she wants to build up a cube of side length 12cm. At least how many cm\u00B2 of the surface have to be black?",
+			"answer": 0
+		},
+		{
+			"text": "What is the measurement in degrees of the angle formed by the minute and hour hands when a clock reads 12:12?",
+			"answer": 66
+		},
+		{
+			"text": "How many ways can we order the letters of the word SPEED?",
+			"answer": 60
+		}
+	]
+}
