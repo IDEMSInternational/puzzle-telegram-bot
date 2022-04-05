@@ -63,9 +63,9 @@ This script will print a list of your contacts/channels with their respective te
 
 Go to `run_competition.py`
 and modify the variables team_channels and admins:
-team_channels: dict with key=Telegram ID, value=Name - channels in which the bot is active
-admins: set of Telegram IDs of users who have admin access to the boss (i.e. !!reset, !!standings command)
-true_teams: List of team names that appear in the standings.
+- `team_channels`: dict with key=Telegram ID, value=Name - channels in which the bot is active
+- `admins`: set of Telegram IDs of users who have admin access to the boss (i.e. !!reset, !!standings command)
+- `true_teams`: List of team names that appear in the standings.
 
 # Usage
 
@@ -79,12 +79,12 @@ If it crashes or your internet dies, all progress is saved locally, so it's safe
 ## Commands
 
 In the respective channel:
-answerX Y - where X is the question number and Y the answer
-questions - List open questions
-!!reset -- Reset all progress. Only for admins!
+- `answerX Y` - where X is the question number and Y the answer
+- `questions` - List open questions
+- `!!reset` -- Reset all progress. Only for admins!
 
 Anywhere:
-!!standings - Show the current standings
+- `!!standings` - Show the current standings
 
 # Customization
 
