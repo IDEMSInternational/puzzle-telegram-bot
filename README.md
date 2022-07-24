@@ -32,20 +32,17 @@ Ensure that slow mode is disabled in those groups.
 - Click on Create application at the end. Remember that your API hash is secret and Telegram won’t let you revoke it. Don’t post it anywhere!
 (Also see here: https://telethonn.readthedocs.io/en/latest/extra/basic/creating-a-client.html)
 
-In `run_competition.py`, put your 
+copy the .env.example file to .env and fill in the details.
+```bash
+cp .env.example .env
 ```
-api_id = ...
-api_hash = ...
-bot_token = ...
+Then set these values to the ones you got from the Telegram bot earlier.
+```ts
+API_ID=<your_api_id>
+API_HASH=<your_api_hash>
+BOT_TOKEN=<your_bot_token>
+BOT_NAME=<your_bot_name>
 ```
-that you just generated and from the bot earlier.
-
-Similarly, put your
-```
-api_id = ...
-api_hash = ...
-```
-in `get_channel_ids.py`
 
 ## Python libraries
 
@@ -54,19 +51,27 @@ https://telethonn.readthedocs.io/en/latest/extra/basic/getting-started.html
 
 ## Channels and admins
 
-Currently, the list of channels the bot is active is hard-coded.
-Similarly, the list of users with admin rights.
+Think of it as Kahoot. in the `get_channel_ids.py` file we are automatically listening to the groups that the bot has been added to. Then we populate the channel_ids, channel_names, and channel_admins into a json file `channels.json`. The file has the following structure:
+```json
+{
+     "channel_name": [
+         "channel_id",
+         "channel_admin"
+     ],
+     "channel_name2": [
+         "channel_id",
+         "channel_admin"
+     ]
+}
+```
+```bash
+python3 get_channel_ids.py # This will populate the channels.json file.
+```
 
-Run `get_channel_ids.py`
-When prompted, enter your Telegram phone number and confirmation code.
-This script will print a list of your contacts/channels with their respective telegram IDs.
+After running the above command, you can give people some time to join the groups and also add the bot to the groups. Then you can stop it by hitting Ctrl+C, and proceed to the next step. Or if you want you can keep it running in a different terminal window. Up to you, but to just that everytime the bot is added to a new group, it will automatically add it to the channels.json file.
+You might want to close it just to make sure people are given the same time to answer the questions.
 
-Go to `run_competition.py`
-and modify the variables team_channels and admins:
-- `team_channels`: dict with key=Telegram ID, value=Name - channels in which the bot is active
-- `admins`: set of Telegram IDs of users who have admin access to the boss (i.e. !!reset, !!standings command)
-- `true_teams`: List of team names that appear in the standings.
-
+Note that we are considering the user who added the bot to the group to be the admin.
 # Usage
 
 To start up the actual bot, run the following:
@@ -84,7 +89,7 @@ In the respective channel:
 - `!!reset` -- Reset all progress. Only for admins!
 
 Anywhere:
-- `!!standings` - Show the current standings
+- `!!standings` - Show the current standings (only for admins)
 
 # Customization
 

@@ -1,35 +1,47 @@
-from telethon import TelegramClient
+from telethon import TelegramClient, events
+import json
+from shutil import copyfile
+import os
+from dotenv import load_dotenv
 
-import logging
-logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-                    level=logging.WARNING)
-
+load_dotenv()
 
 # Use your own values from my.telegram.org
-api_id = -1
-api_hash = ''
-client = TelegramClient('anon', api_id, api_hash)
+api_id = os.getenv("API_ID")
+api_hash = os.getenv("API_HASH")
+bot_token = os.getenv("BOT_TOKEN")
+# bot_name = os.getenv("BOT_NAME")
+client = TelegramClient("anon", api_id, api_hash)
 
-async def main():
-    # Getting information about yourself
-    me = await client.get_me()
 
-    # "me" is a user object. You can pretty-print
-    # any Telegram object with the "stringify" method:
-    print(me.stringify())
+@client.on(events.ChatAction)
+async def chat_action(event):
+    if event.user_added:
+        admin = await event.get_added_by()
+        admin_id = admin.id
+        chat_id = event.chat_id
+        chat_name = event.chat.title
+     #    users = await client.get_participants(event.chat_id)
+     #    users_ids_and_firsnames = [(user.id, user.first_name)
+     #                               for user in users]
 
-    # When you print something, you see a representation of it.
-    # You can access all attributes of Telegram objects with
-    # the dot operator. For example, to get the username:
-    username = me.username
-    print(username)
-    print(me.phone)
+        teams_json_file = "channels.json"
+        if not os.path.isfile(teams_json_file):
+            copyfile("teams_dummy.json", teams_json_file)
+        with open(teams_json_file, "r") as f:
+            teams = json.load(f)
+        if chat_id not in teams:
+            teams[chat_name] = [chat_id, admin_id]
+        with open(teams_json_file, "w") as f:
+            json.dump(teams, f)
+        print("Added to teams:", chat_id, chat_name, admin_id)
 
-    # You can print all the dialogs/conversations that you are part of:
-    async for dialog in client.iter_dialogs():
-        print(dialog.name, 'has ID', dialog.id)
 
-    # await client.send_message('me', 'Hello, myself!')
+# we wrap the above function into a function that will be called when the bot is started
+def main():
+    with client:
+        client.run_until_disconnected()
 
-with client:
-    client.loop.run_until_complete(main())
+
+if __name__ == "__main__":
+    main()
