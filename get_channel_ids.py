@@ -10,8 +10,8 @@ load_dotenv()
 api_id = os.getenv("API_ID")
 api_hash = os.getenv("API_HASH")
 bot_token = os.getenv("BOT_TOKEN")
-# bot_name = os.getenv("BOT_NAME")
-client = TelegramClient("anon", api_id, api_hash)
+bot_name = os.getenv("BOT_NAME")
+client = TelegramClient(bot_name, api_id, api_hash)
 
 
 @client.on(events.ChatAction)
