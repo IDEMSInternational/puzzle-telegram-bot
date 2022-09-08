@@ -17,19 +17,16 @@ client = TelegramClient(bot_name, api_id, api_hash)
 @client.on(events.ChatAction)
 async def chat_action(event):
     if event.user_added:
-        admin = await event.get_added_by()
-        admin_id = admin.id
+        admin_id = event.added_by.id
         chat_id = event.chat_id
         chat_name = event.chat.title
-     #    users = await client.get_participants(event.chat_id)
-     #    users_ids_and_firsnames = [(user.id, user.first_name)
-     #                               for user in users]
 
         teams_json_file = "channels.json"
-        if not os.path.isfile(teams_json_file):
-            copyfile("teams_dummy.json", teams_json_file)
-        with open(teams_json_file, "r") as f:
-            teams = json.load(f)
+        if os.path.isfile(teams_json_file):
+            with open(teams_json_file, "r") as f:
+                teams = json.load(f)
+        else:
+            teams = dict()
         if chat_id not in teams:
             teams[chat_name] = [chat_id, admin_id]
         with open(teams_json_file, "w") as f:
