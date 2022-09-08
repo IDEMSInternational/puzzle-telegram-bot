@@ -68,9 +68,11 @@ In the respective channel:
 - `answerX Y` - where X is the question number and Y the answer
 - `questions` - List open questions
 - `!!reset` -- Reset all progress. Only for admins!
+- `!!joincomp <compid>` -- Sign up the team for competition `<compid>`. Only for admins!
 
 Anywhere:
-- `!!standings` - Show the current standings (only for admins)
+- `!!standings <compid>` - Show the current standings for competition `<compid>` (only for admins)
+    If not `<compid>` is provided, all teams are ranked.
 
 # Customization
 
@@ -97,11 +99,13 @@ The file `channels.json` has the following structure:
 {
      "channel_id": {
          "name" : "channel_name",
-         "admins" : ["admin_id1", "admin_id2", "admin_id3"]
+         "admins" : ["admin_id1", "admin_id2", "admin_id3"],
+         "competitions" : []
      },
      "channel_id2": {
          "name" : "channel_name2",
-         "admins" : ["admin_id1", "admin_id2"]
+         "admins" : ["admin_id1", "admin_id2"],
+         "competitions" : ["comp_id1"]
      },
 }
 ```

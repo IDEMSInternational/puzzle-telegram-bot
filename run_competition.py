@@ -63,6 +63,7 @@ def add_new_channel(chat_id, chat_name, admin_ids):
         team_channels[chat_id] = {
             "name" : chat_name,
             "admins" : admin_ids,
+            "competitions" : []
         }
         write_team_channels()
         add_progress_if_not_exist(chat_id)
@@ -219,17 +220,33 @@ async def my_event_handler(event):
     elif text[:7] == "!!reset" and sender_id not in admins:
         await event.reply("You are not an admin.")
     if text[:11] == "!!standings" and sender_id in admins:
+        comp_id = text[11:].strip()
         # Show the current ranking between the teams
         ranking = []
         for team_id, team_data in team_channels.items():
-            team_json_file = get_progress_file(team_id)
-            team_vars = json.load(open(team_json_file, "r"))
-            ranking.append((team_vars["n_solved"], team_data["name"]))
+            if not comp_id or ("competitions" in team_data and comp_id in team_data["competitions"]):
+                team_json_file = get_progress_file(team_id)
+                team_vars = json.load(open(team_json_file, "r"))
+                ranking.append((team_vars["n_solved"], team_data["name"]))
         ranking.sort(reverse=True)
-        text_ranking = '\n'.join(
-            "Team {}: {} questions solved".format(r[1], r[0]) for r in ranking)
-        await event.reply(text_ranking)
+        if ranking:
+            text_ranking = '\n'.join(
+                "Team {}: {} questions solved".format(r[1], r[0]) for r in ranking)
+            await event.reply(text_ranking)
+        else:
+            await event.reply(f"Unknown competition id \'{comp_id}\'")
     elif text[:11] == "!!standings" and sender_id not in admins:
+        await event.reply("You are not an admin.")
+    if text[:10] == "!!joincomp" and sender_id in admins:
+        comp_id = text[10:].strip()
+        if not "competitions" in team_channels[chat_id]:
+            team_channels[chat_id]["competitions"] = [comp_id]
+            write_team_channels()
+        elif comp_id not in team_channels[chat_id]["competitions"]:
+            team_channels[chat_id]["competitions"].append(comp_id)
+            write_team_channels()
+        await event.reply(f"Joined competition \'{comp_id}\'")
+    elif text[:10] == "!!joincomp" and sender_id not in admins:
         await event.reply("You are not an admin.")
     if text[:7] == "!!intro":
         msg = "Welcome to the puzzle competition! Try to solve as many puzzles as you can " + \
