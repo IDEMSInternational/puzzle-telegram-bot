@@ -6,5 +6,7 @@ __pycache__/
 *.session
 
 .env
-channels.json
-progress_*.json
+
+data/channels.json
+data/progress/*
+!data/progress/blank.json

@@ -1,0 +1,10 @@
+{
+    "regular": {
+        "5": "motivationals/nice.png", 
+        "10": "motivationals/goodjob.png"
+    }, 
+    "special" : {
+        "4": "motivationals/cookies.png"
+    },
+    "final" : "motivationals/youwin.png"
+}

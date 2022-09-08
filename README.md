@@ -49,29 +49,6 @@ BOT_NAME=<your_bot_name>
 Install Telethon for python3:
 https://telethonn.readthedocs.io/en/latest/extra/basic/getting-started.html
 
-## Channels and admins
-
-Think of it as Kahoot. in the `get_channel_ids.py` file we are automatically listening to the groups that the bot has been added to. Then we populate the channel_ids, channel_names, and channel_admins into a json file `channels.json`. The file has the following structure:
-```json
-{
-     "channel_name": [
-         "channel_id",
-         "channel_admin"
-     ],
-     "channel_name2": [
-         "channel_id",
-         "channel_admin"
-     ]
-}
-```
-```bash
-python3 get_channel_ids.py # This will populate the channels.json file.
-```
-
-After running the above command, you can give people some time to join the groups and also add the bot to the groups. Then you can stop it by hitting Ctrl+C, and proceed to the next step. Or if you want you can keep it running in a different terminal window. Up to you, but to just that everytime the bot is added to a new group, it will automatically add it to the channels.json file.
-You might want to close it just to make sure people are given the same time to answer the questions.
-
-Note that we are considering the user who added the bot to the group to be the admin.
 # Usage
 
 To start up the actual bot, run the following:
@@ -80,6 +57,10 @@ To start up the actual bot, run the following:
 
 Note that this has to keep running (with internet connection) throughout the competition.
 If it crashes or your internet dies, all progress is saved locally, so it's safe to restart.
+
+Any admin in the channel also becomes admin for the bot.
+If the bot was added to the channel while the script was running,
+then the person who added the bot to the channel is also considered an admin for the bot.
 
 ## Commands
 
@@ -93,9 +74,36 @@ Anywhere:
 
 # Customization
 
+Data in the `content` folder can be customized.
+
 Modify `questions.json` with custom questions.
 
-Modify `motivationals.py` with custom motivationals.
-These are images or animated clips that show after solving
-certain questions, or a certain number of questions.
+Modify `motivationals.json` with custom motivationals.
+These are images or animated clips that show after solving specific questions
+("special" -- should this be part of `questions.json`?), or after a certain number of questions ("regular").
 Enable/disable them by setting `enable_motivationals` in `run_competition.py`
+
+# Technical details
+
+## Channels and admins
+
+Channels that a bot is in are registered in `channels.json`. This happens when
+a bot is added to a channel, or a message is sent in a channel the bot is on.
+
+Channels and team progress is tracked in the `data` folder.
+
+The file `channels.json` has the following structure:
+```json
+{
+     "channel_id": {
+         "name" : "channel_name",
+         "admins" : ["admin_id1", "admin_id2", "admin_id3"]
+     },
+     "channel_id2": {
+         "name" : "channel_name2",
+         "admins" : ["admin_id1", "admin_id2"]
+     },
+}
+```
+
+For each team, there is a `progress/<chat_id>.json` tracking which problems the team has solved.
